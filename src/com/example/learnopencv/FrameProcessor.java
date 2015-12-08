@@ -7,6 +7,7 @@ import org.opencv.core.Size;
 import org.opencv.core.Point;
 import org.opencv.core.Core;
 import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
 
 import android.util.Log;
 
@@ -21,7 +22,9 @@ public class FrameProcessor {
 		Mat roi1 = new Mat(inputFrame, roiRect1);
 		Mat roi2 = new Mat(inputFrame, roiRect2);
 		Log.d(TAG, "begin to copy Frame.");
-		roi1.copyTo(roi2);
+		//roi1.copyTo(roi2);
+		
+		Imgproc.GaussianBlur(roi1, roi2, new Size(7, 7), 1.5, 1.5);
 		
 		drawLine(inputFrame);
 		return inputFrame;
