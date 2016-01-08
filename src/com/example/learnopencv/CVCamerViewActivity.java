@@ -81,6 +81,7 @@ public class CVCamerViewActivity extends Activity  implements CameraBridgeViewBa
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         frameProcessor = new FrameProcessor();
         
 		setContentView(R.layout.activity_cvcamer_view);
@@ -105,7 +106,8 @@ public class CVCamerViewActivity extends Activity  implements CameraBridgeViewBa
     {
         super.onResume();
         Log.i(TAG, "Trying to load OpenCV library");
-        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_6, this, _openCVCallBack)) {
+        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, _openCVCallBack)) {
+//    	if (!OpenCVLoader.initDebug()) {
         	Log.e(TAG, "Cannot connect to OpenCV Manager");
         }
     }
