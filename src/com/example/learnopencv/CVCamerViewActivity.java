@@ -33,6 +33,8 @@ public class CVCamerViewActivity extends Activity  implements CameraBridgeViewBa
 	 */
 	private static final boolean AUTO_HIDE = true;
 
+	//static {System.loadLibrary("opencv_java249");}
+	
 	/**
 	 * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
 	 * user interaction before hiding the system UI.
@@ -106,7 +108,7 @@ public class CVCamerViewActivity extends Activity  implements CameraBridgeViewBa
     {
         super.onResume();
         Log.i(TAG, "Trying to load OpenCV library");
-        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, _openCVCallBack)) {
+        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, _openCVCallBack)) {
 //    	if (!OpenCVLoader.initDebug()) {
         	Log.e(TAG, "Cannot connect to OpenCV Manager");
         }
